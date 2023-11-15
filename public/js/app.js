@@ -31,7 +31,7 @@ window.onload = async () => {
 
     // Process the login state
     await auth0.handleRedirectCallback();
-    
+
     updateUI();
 
     // Use replaceState to redirect the user away and remove the querystring parameters
@@ -40,7 +40,7 @@ window.onload = async () => {
 };
 
 // NEW
-const updateUI = async () => { 
+const updateUI = async () => {
   const isAuthenticated = await auth0.isAuthenticated();
 
   document.getElementById("btn-logout").disabled = !isAuthenticated;
@@ -64,13 +64,15 @@ const updateUI = async () => {
 };
 
 const login = async () => {
-  await auth0.loginWithRedirect({
+  await auth0.loginWithRedirect( // authorizationParams:
+  {
     redirect_uri: window.location.origin
   });
 };
 
 const logout = () => {
-  auth0.logout({
+  auth0.logout( //  logoutParams:
+  {
     returnTo: window.location.origin
   });
 };
