@@ -1,4 +1,5 @@
 {
   "domain": "dev-eotg0z85pr05wnrr.us.auth0.com",
-  "clientId": "npSdAu3wk8NbYm9luh1zaCs6kta16CTQ"
+  "clientId": "npSdAu3wk8NbYm9luh1zaCs6kta16CTQ",
+  "audience": "http://localhost:4000/api/external"
 }

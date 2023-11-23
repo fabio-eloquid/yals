@@ -14,6 +14,9 @@
     <p>Welcome to our page!</p>
     <button id="btn-login" disabled="true" onclick="login()">Log in</button>
     <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
+	<button id="btn-call-api" disabled="true" onclick="callApi()">Call Api</button>
+	<!-- Add a container to hold the response from the call -->
+	<pre id="api-call-result"></pre>
   <div class="hidden" id="gated-content">
     <p>
       You're seeing this content because you're currently
@@ -27,6 +30,10 @@
       User profile:
       <pre id="ipt-user-profile"></pre>
     </label>
+	<label>
+	  State:
+	  <pre id="ipt-state"></pre>
+	</label>
   </div>
   </body>
 </html>

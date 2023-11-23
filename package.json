@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.1.2",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-oauth2-jwt-bearer": "^1.6.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
