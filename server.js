@@ -3,6 +3,14 @@ const { join } = require("path");
 const app = express();
 const { auth } = require("express-oauth2-jwt-bearer");
 const authConfig = require("./auth_config.json");
+const https = require('https');
+const fs = require('fs');
+
+
+const privateKey = fs.readFileSync('localhost.key', 'utf8');
+const certificate = fs.readFileSync('localhost.crt', 'utf8');
+const credentials = { key: privateKey, cert: certificate };
+
 
 console.log("Auth Config:", authConfig);
 
@@ -69,3 +77,6 @@ app.use(function(err, req, res, next) {
 
 // Listen on port 4000
 app.listen(4000, () => console.log("Application running on port 4000"));
+
+//const httpsServer = https.createServer(credentials, app);
+//httpsServer.listen(4000, () => console.log("HTTPS server running on port 4000"));

