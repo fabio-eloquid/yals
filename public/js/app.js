@@ -29,6 +29,8 @@ window.onload = async () => {
   // NEW - check for the code and state parameters
   const query = window.location.search;
   if (query.includes("code=") && query.includes("state=")) {
+	console.log("OAuth2 state: " + new URLSearchParams(window.location.search).get("state"));
+	console.log("OAuth2 authorization code: " + new URLSearchParams(window.location.search).get("code"));
 
     // Process the login state
     await auth0.handleRedirectCallback();
@@ -41,25 +43,19 @@ window.onload = async () => {
 };
 
 // NEW
-const updateUI = async () => { 
+const updateUI = async () => {
   const isAuthenticated = await auth0.isAuthenticated();
 
   document.getElementById("btn-logout").disabled = !isAuthenticated;
   document.getElementById("btn-login").disabled = isAuthenticated;
   document.getElementById("btn-call-api").disabled = !isAuthenticated;
 
-  // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
     document.getElementById("gated-content").classList.remove("hidden");
 
-    document.getElementById(
-      "ipt-access-token"
-    ).innerHTML = await auth0.getTokenSilently();
-
-    document.getElementById("ipt-user-profile").textContent = JSON.stringify(
-      await auth0.getUser()
-    );
-
+    // Get the access token and user profile
+    document.getElementById("ipt-access-token").innerHTML = await auth0.getTokenSilently();
+    document.getElementById("ipt-user-profile").textContent = JSON.stringify(await auth0.getUser());
   } else {
     document.getElementById("gated-content").classList.add("hidden");
   }
